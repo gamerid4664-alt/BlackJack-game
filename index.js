@@ -39,6 +39,30 @@ let islive = true
 
 let update_newCard = document.getElementById("newCard")
 
+let credits = document.getElementById("credit")
+let playerName_holder = document.getElementById("player-name")
+
+let playerchips = 145
+let playerName = "toxic"
+playerName_holder.textContent = playerName
+
+
+function debit_money(){
+    
+   
+    if(playerchips === 10){
+    credits.textContent = "sorry you are running out of credits"
+
+    islive = false
+    }
+    else{
+        playerchips = playerchips - 15
+        credits.textContent = playerchips + "$"
+    }
+}
+
+
+
 
 
 
@@ -127,7 +151,8 @@ else{
     update_message.textContent = message
     islive = false
 }
-
+playerchips = 145
+credits.textContent = playerchips + "$"
     
 }
 
@@ -137,8 +162,12 @@ else{
 function newCard(){
     let new_card = Math.floor(Math.random() * 13) + 1
     update_newCard.textContent = new_card
+    debit_money()
+
+    
     return new_card
     
+   
 }
 
 function drawCard(){
